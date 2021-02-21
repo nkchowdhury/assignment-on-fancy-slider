@@ -1,0 +1,1 @@
+# assignment-on-fancy-slider
