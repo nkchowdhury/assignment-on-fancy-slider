@@ -18,6 +18,7 @@ const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 
 const getImages = (query) => {
   const url =(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
+  // toggleSpinner()
   fetch(url)
     .then(res => res.json())
     .then(data => showImages(data.hits))
@@ -42,7 +43,7 @@ const showImages = (images) => {
 }
 
 
-
+//image selected
 
 let slideIndex = 0;
 const selectItem = (event, img) => {
@@ -74,9 +75,10 @@ const createSlider = () => {
 
   sliderContainer.appendChild(prevNext)
   document.querySelector('.main').style.display = 'block';
+
   // hide image aria
   imagesArea.style.display = 'none';
-  const duration = document.getElementById('duration').value || 1000;
+  // const duration = document.getElementById('duration').value || 1000;
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";
@@ -129,3 +131,7 @@ searchBtn.addEventListener('click', function () {
 sliderBtn.addEventListener('click', function () {
   createSlider()
 })
+
+// const toggleSpinner = () => {
+//   const spinner = document.getElementById("loading-spinner");
+//   spinner.classList.add("d-none");
