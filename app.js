@@ -79,7 +79,11 @@ const createSlider = () => {
 
   // hide image aria
   imagesArea.style.display = 'none';
-  const duration = document.getElementById('duration').value || 1000;
+  const duration = document.getElementById("duration").value;
+  if(duration < 1){
+    alert("Please Enter a Positive Value");
+    return;
+  };
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";
@@ -93,12 +97,12 @@ const createSlider = () => {
     slideIndex++;
     changeSlide(slideIndex);
   }, duration);
-}
+};
 
 // change slider index 
 const changeItem = index => {
   changeSlide(slideIndex += index);
-}
+};
 
 // change slide item
 const changeSlide = (index) => {
@@ -116,10 +120,10 @@ const changeSlide = (index) => {
 
   items.forEach(item => {
     item.style.display = "none"
-  })
+  });
 
   items[index].style.display = "block"
-}
+};
 
 searchBtn.addEventListener('click', function () {
   document.querySelector('.main').style.display = 'none';
@@ -127,11 +131,11 @@ searchBtn.addEventListener('click', function () {
   const search = document.getElementById('search');
   getImages(search.value)
   sliders.length = 0;
-})
+});
 
 sliderBtn.addEventListener('click', function () {
-  createSlider()
-})
+  createSlider();
+});
 
 // const toggleSpinner = () => {
 //   const spinner = document.getElementById("loading-spinner");
