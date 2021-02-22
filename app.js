@@ -4,6 +4,7 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+
 // selected image 
 let sliders = [];
 
@@ -22,7 +23,7 @@ const getImages = (query) => {
   fetch(url)
     .then(res => res.json())
     .then(data => showImages(data.hits))
-    .catch(err => console.log(err))
+    // .catch(err => console.log(err))
 }
 
 
@@ -37,10 +38,10 @@ const showImages = (images) => {
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
-    gallery.appendChild(div)
-  })
+    gallery.appendChild(div);
+  });
 
-}
+};
 
 
 //image selected
@@ -78,8 +79,11 @@ const createSlider = () => {
   document.querySelector('.main').style.display = 'block';
 
   // hide image aria
+
   imagesArea.style.display = 'none';
-  const duration = document.getElementById("duration").value;
+
+ 
+  var duration = document.getElementById('duration').value || 1000;
   if(duration < 1){
     alert("Please Enter a Positive Value");
     return;
