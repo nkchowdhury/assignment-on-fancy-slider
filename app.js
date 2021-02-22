@@ -141,6 +141,15 @@ sliderBtn.addEventListener('click', function () {
   createSlider();
 });
 
+// enter key press
+document
+  .getElementById("search")
+  .addEventListener("keypress", function (event) {
+    if (event.key == "Enter") {
+      searchBtn.click();
+    }
+  });
+
 // const toggleSpinner = () => {
 //   const spinner = document.getElementById("loading-spinner");
 //   spinner.classList.add("d-none");
